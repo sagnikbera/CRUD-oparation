@@ -1,5 +1,5 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import api from "../api/axios";
+import { createContext, useContext, useEffect, useState } from 'react';
+import api from '../api/axios';
 
 const ProductContext = createContext();
 
@@ -12,14 +12,14 @@ export const ProductProvider = ({ children }) => {
   // all pdt
   const fetchProducts = async () => {
     setLoading(true);
-    const res = await api.get("/products");
+    const res = await api.get('/products');
     setProducts(res.data);
     setLoading(false);
   };
 
   // add
   const addProduct = async (product) => {
-    await api.post("/products", product);
+    await api.post('/products', product);
     fetchProducts();
   };
 
