@@ -11,10 +11,10 @@ const ProductForm = ({ initialData, onSubmit }) => {
   );
 
   useEffect(() => {
-    if(initialData) {
-        setForm(initialData);
+    if (initialData) {
+      setForm(initialData);
     }
-  } , [initialData])
+  }, [initialData]);
 
   const handleChange = (e) => {
     setForm({
