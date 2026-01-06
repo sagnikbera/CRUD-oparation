@@ -1,7 +1,30 @@
-import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ProductProvider } from './context/ProductContext';
+import ProductList from './pages/ProductList';
+import AddProduct from './pages/AddProduct';
+import EditProduct from './pages/EditProduct';
 
 const App = () => {
-  return <div className="text-3xl font-bold underline">wdadad</div>;
+  return (
+    <ProductProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route 
+            path="/" 
+            element={<ProductList />} 
+          />
+          <Route 
+            path="/add" 
+            element={<AddProduct />} 
+          />
+          <Route 
+            path="/edit/:id" 
+            element={<EditProduct />} 
+          />
+        </Routes>
+      </BrowserRouter>
+    </ProductProvider>
+  );
 };
 
 export default App;
