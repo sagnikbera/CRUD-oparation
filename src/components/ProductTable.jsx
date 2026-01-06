@@ -7,50 +7,51 @@ const ProductTable = () => {
   const { products, deleteProduct, loading } = useProducts();
   const navigate = useNavigate();
 
-  const column = [
+  const columns = [
     {
-        name : "Title",
-        selector: row => row.title,
-        sortable: true,
+      name: 'Title',
+      selector: (row) => row.title,
+      sortable: true,
     },
     {
-        name: "Price",
-        selector: row => `$${row.price}`,
-        sortable: true,
+      name: 'Price',
+      selector: (row) => `$${row.price}`,
+      sortable: true,
     },
     {
-        name: "Category",
-        selector: row => row.cetegory,
-    },{
-        name: "Action",
-        cell: row => (
-            <div className='flex gap-2'>
-                <button 
-                className='px-3 py-1 bg-blue-500 text-wh rounded'
-                onClick={()=> navigate(`/edit/${row.id}`)}
-                >
-                    Edit
-                </button>
-                <button
-                className='px-3 py-1 bg-red-500/70 text-white rounded'
-                onClick={()=> deleteProduct(row.id)}
-                >
-                    Delete
-                </button>
-            </div>
-        )
-    }
-  ]
+      name: 'Category',
+      selector: (row) => row.category,
+    },
+    {
+      name: 'Action',
+      cell: (row) => (
+        <div className="flex gap-2">
+          <button
+            className="px-3 py-1 bg-blue-500 text-wh rounded"
+            onClick={() => navigate(`/edit/${row.id}`)}
+          >
+            Edit
+          </button>
+          <button
+            className="px-3 py-1 bg-red-500/70 text-white rounded"
+            onClick={() => deleteProduct(row.id)}
+          >
+            Delete
+          </button>
+        </div>
+      ),
+    },
+  ];
   return (
     <>
-    <DataTable
+      <DataTable
         title="Products"
         columns={columns}
         data={products}
         progressPending={loading}
         pagination
         highlightOnHover
-    />
+      />
     </>
   );
 };

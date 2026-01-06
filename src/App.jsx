@@ -9,18 +9,9 @@ const App = () => {
     <ProductProvider>
       <BrowserRouter>
         <Routes>
-          <Route 
-            path="/" 
-            element={<ProductList />} 
-          />
-          <Route 
-            path="/add" 
-            element={<AddProduct />} 
-          />
-          <Route 
-            path="/edit/:id" 
-            element={<EditProduct />} 
-          />
+          <Route path="/" element={<ProductList />} />
+          <Route path="/add" element={<AddProduct />} />
+          <Route path="/edit/:id" element={<EditProduct />} />
         </Routes>
       </BrowserRouter>
     </ProductProvider>
