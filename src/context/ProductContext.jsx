@@ -61,11 +61,14 @@ export const ProductProvider = ({ children }) => {
     }
   };
 
+  const categories = [...new Set(products.map((p) => p.category))];
+
   return (
     <ProductContext.Provider
       value={{
         products,
         loading,
+        categories,
         addProduct,
         updateProduct,
         deleteProduct,
