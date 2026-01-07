@@ -3,9 +3,11 @@ import { useProducts } from '../context/ProductContext';
 import { useNavigate } from 'react-router-dom';
 import DataTable from 'react-data-table-component';
 
-const ProductTable = () => {
+const ProductTable = ({data}) => {
   const { products, deleteProduct, loading } = useProducts();
   const navigate = useNavigate();
+
+  const getData = data || products;
 
   const columns = [
     {
@@ -47,7 +49,7 @@ const ProductTable = () => {
       <DataTable
         title="Products"
         columns={columns}
-        data={products}
+        data={getData}
         progressPending={loading}
         pagination
         highlightOnHover
