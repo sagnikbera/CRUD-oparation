@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { useProducts } from '../context/ProductContext';
 
 const ProductForm = ({ initialData, onSubmit }) => {
+  const { categories } = useProducts();
+
   const [form, setForm] = useState(
     initialData || {
       title: '',
@@ -49,14 +52,29 @@ const ProductForm = ({ initialData, onSubmit }) => {
         onChange={handleChange}
         className="w-full border p-2"
       />
-      <input
+      {/* <input
         type="text"
         name="category"
         placeholder="Category"
         value={form.category}
         onChange={handleChange}
         className="w-full border p-2"
-      />
+      /> */}
+      <select
+        name="category"
+        value={form.category}
+        onChange={handleChange}
+        className="w-full border p-2"
+      >
+        <option value="" disabled>
+          Select Category
+        </option>
+        {categories.map((c) => (
+          <option key={c} value={c}>
+            {c}
+          </option>
+        ))}
+      </select>
       <input
         type="text"
         name="description"
